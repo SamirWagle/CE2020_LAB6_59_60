@@ -71,8 +71,8 @@ int main(){
 
     cout<<"Removing a vertex from the graph and showing the total no of vertices\n";
     cout<<"The number before removing is "<<g1.numVertex()<<endl;
-    //lab6.removeVertex(3);
-    cout<<"The number after removing is 5"<<endl;
-
+   
+    cout<<"The number after removing is "<<endl;
+ g1.removeVertex(3);
     return 0;
 }
