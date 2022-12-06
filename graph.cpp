@@ -5,12 +5,15 @@ using namespace std;
 
 bool graph::isEmpty()
 {
-    return (HEAD == nullptr) ? true : false;
+    if(HEAD==nullptr){
+        return true;
+    }
+    return false;
 };
 
 bool graph::isDirected()
 {
-    return (directed) ? true : false;
+    return directed;
 };
 
 void graph::addVertex(int vertexToAdd)
