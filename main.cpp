@@ -4,73 +4,73 @@
 using namespace std;
 
 int main(){
-    cout<<"Graph, adjacency list implementation\n\n";
-    graph lab6;
+    cout<<"Graph Adjacency List\n\n";
+    graph g1;
 
-    cout<<"Checking if the graph is empty or not \n";
-    if(lab6.isEmpty()){
+    cout<<"Is our graph empty??? \n";
+    if(g1.isEmpty()){
         cout<<"The graph is empty\n\n";
     }else{
         cout<<"The graph is not empty\n\n";
     }
 
-    cout<<"Adding vertex to the graph and checking isEmpty\n";
-    lab6.addVertex(5);
-    if(lab6.isEmpty()){
-        cout<<"The graph is empty\n\n";
+    cout<<"Adding vertex to the graph \n\n And checking isEmpty\n";
+    g1.addVertex(5);
+    if(g1.isEmpty()){
+        cout<<"Graph is empty\n\n";
     }else{
-        cout<<"The graph is not empty\n\n";
+        cout<<"Graph is not empty\n\n";
     }
 
-    cout<<"Checking if the graph is directed or not\n";
-    if(lab6.isDirected()){
+    cout<<"Is the graph Directed???\nLet's check\n\n";
+    if(g1.isDirected()){
         cout<<"The graph is directed\n\n";
     }else{
         cout<<"The graph is not directed\n\n";
     }
 
     cout<<"Adding more vertex and checking no of vertex in the graph\n";
-    lab6.addVertex(5);
-    lab6.addVertex(1);
-    lab6.addVertex(9);
-    lab6.addVertex(7);
-    lab6.addVertex(3);
-    cout<<"The no of vertex in the graph is "<<lab6.numVertex()<<endl<<endl;
+    g1.addVertex(100);
+    g1.addVertex(50);
+    g1.addVertex(40);
+    g1.addVertex(30);
+    g1.addVertex(5);
+    cout<<"The number of vertex in the graph is "<<g1.numVertex()<<endl<<endl;
 
-    cout<<"Adding edges between vertices and checking if they are neighbours\n";
-    lab6.addEdges(1,9);
-    lab6.addEdges(7,5);
-    lab6.addEdges(3,5);
-    lab6.addEdges(5,9);
-    lab6.addEdges(3,1);
-    if(lab6.isNeighbour(7,5)){
-        cout<<"The numbers are neighbours\n\n";
+    cout<<"Adding edges between vertices\n\n Checking if they are neighbours or not\n";
+    g1.addEdges(50,40);
+    g1.addEdges(30,100);
+    g1.addEdges(5,100);
+    g1.addEdges(100,40);
+    g1.addEdges(5,50);
+    if(g1.isNeighbour(30,100)){
+        cout<<"The numbers are neighbours of each other\n\n";
     }else{
         cout<<"The numbers are not neighbours\n\n";
     }
 
-    cout<<"Checking the degree of a vertex\n";
-    cout<<"The indegree of vertex with data 5 is "<<lab6.inDegree(5)<<endl;
-    cout<<"The outdegree of vertex with data 3 is "<<lab6.outDegree(3)<<endl;
-    cout<<"The degree of vertex with data 9 is "<<lab6.degree(9)<<endl<<endl;
+    cout<<"Checking the Degree of a Vertex\n";
+    cout<<"Indegree of vertex 100 is "<<g1.inDegree(5)<<endl;
+    cout<<"Outdegree of vertex 5 is "<<g1.outDegree(3)<<endl;
+    cout<<"Degree of vertex 40 is "<<g1.degree(9)<<endl<<endl;
 
-    cout<<"The total no of edges in the graph is "<<lab6.numEdges()<<endl<<endl;
+    cout<<"The total number of edges in the graph "<<g1.numEdges()<<endl<<endl;
 
-    if(lab6.isNeighbour(7,5)){
-        cout<<"The numbers 7 and 5 are neighbours\n";
+    if(g1.isNeighbour(30,100)){
+        cout<<"30 and 100 are neighbours\n";
     }else{
-        cout<<"The numbers 7 and 5 are not neighbours\n";
+        cout<<"30 and 100 are not neighbours\n";
     }
     cout<<"Removing an edge from the vertex and checking if they are neighbours\n";
-    lab6.removeEdges(7,5);
-    if(lab6.isNeighbour(7,5)){
-        cout<<"The numbers 7 and 5 are neighbours\n\n";
+    g1.removeEdges(30,100);
+    if(g1.isNeighbour(30,100)){
+        cout<<"30 and 100 are neighbours\n\n";
     }else{
-        cout<<"The numbers 7 and 5 are not neighbours\n\n";
+        cout<<"30 and 100 are not neighbours\n\n";
     }
 
     cout<<"Removing a vertex from the graph and showing the total no of vertices\n";
-    cout<<"The number before removing is "<<lab6.numVertex()<<endl;
+    cout<<"The number before removing is "<<g1.numVertex()<<endl;
     //lab6.removeVertex(3);
     cout<<"The number after removing is 5"<<endl;
 
