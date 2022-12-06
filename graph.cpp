@@ -108,13 +108,13 @@ void graph::removeEdges(int ver1, int ver2)
     Node *newNode1 = HEAD;
     Node *newNode2;
     Node *newNode3;
-    while (true)
+    while (newNode1!=nullptr)
     {
         if (newNode1->data == ver1)
         {
             newNode2 = newNode1->neighbour;
             newNode3 = newNode1;
-            while (true)
+            while (newNode2 != nullptr)
             {
                 if (newNode2->data == ver2)
                 {
@@ -127,10 +127,7 @@ void graph::removeEdges(int ver1, int ver2)
             }
         }
         newNode1 = newNode1->next;
-        if (newNode1 == nullptr)
-        {
-            break;
-        }
+       
     }
     return;
 };
@@ -199,11 +196,13 @@ int graph::outDegree(int ver)
             while (neighbour1 != nullptr)
             {
                 count++;
-                neighbour1 = neighbour1->neighbour;
+                neighbour1=neighbour1->neighbour;
+                }
+                break;
             }
-            break;
+            vertex=vertex->next;
         }
-    }
+    
     return count;
 };
 
@@ -229,17 +228,19 @@ Node *graph::neighbours(int ver)
 bool graph::isNeighbour(int ver1, int ver2)
 {
     Node *newNode = HEAD;
+    Node *temp;
     while (newNode != nullptr)
     {
         if (newNode->data == ver1)
         {
-            while (newNode != nullptr)
+            temp=newNode->neighbour;
+            while (temp != nullptr)
             {
-                newNode = newNode->neighbour;
-                if (newNode->data == ver2)
+                if (temp->data == ver2)
                 {
                     return true;
                 }
+                temp = temp->neighbour;
             }
         }
         newNode = newNode->next;
