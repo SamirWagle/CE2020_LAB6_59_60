@@ -162,7 +162,7 @@ int graph::numEdges()
     return count;
 };
 
-int graph::indegree(int ver)
+int graph::inDegree(int ver)
 {
     Node *vertex = HEAD;
     Node *neighbour1;
@@ -183,7 +183,7 @@ int graph::indegree(int ver)
     return count;
 };
 
-int graph::outdegree(int ver)
+int graph::outDegree(int ver)
 {
     Node *vertex = HEAD;
     Node *neighbour1;
@@ -206,7 +206,7 @@ int graph::outdegree(int ver)
 
 int graph::degree(int ver)
 {
-    return (this->indegree(ver) + this->outdegree(ver));
+    return (this->inDegree(ver) + this->outDegree(ver));
 };
 
 Node *graph::neighbours(int ver)

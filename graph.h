@@ -29,8 +29,8 @@ public:
     void removeEdges(int ver1, int ver2);
     int numVertex();
     int numEdges();
-    int indegree(int ver);
-    int outdegree(int ver);
+    int inDegree(int ver);
+    int outDegree(int ver);
     int degree(int ver);
     Node *neighbours(int ver);
     bool isNeighbour(int ver1, int ver2);
