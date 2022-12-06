@@ -3,163 +3,200 @@
 
 using namespace std;
 
-bool graph::isEmpty(){
-    if(head==nullptr){
-        return true;
-    }
-    return false;
+bool graph::isEmpty()
+{
+    return (HEAD == nullptr) ? true : false;
 };
 
-bool graph::isDirected(){
-    return directed;
+bool graph::isDirected()
+{
+    return (directed) ? true : false;
 };
 
-void graph::addVertex(int key){
-    node* temp = head;
-    node*temp1=new node(key);
-    if(temp==nullptr){
-        head = temp1;
+void graph::addVertex(int vertexToAdd)
+{
+    Node *newNode = HEAD;
+    Node *newNode1 = new Node(vertexToAdd);
+    if (newNode == nullptr)
+    {
+        HEAD = newNode1;
         return;
     }
-    while (true){
-        if(temp->next==nullptr){
-            temp->next=temp1;
+    while (true)
+    {
+        if (newNode->next == nullptr)
+        {
+            newNode->next = newNode1;
             break;
         }
-        temp=temp->next;
+        newNode = newNode->next;
     }
     return;
 };
 
-void graph::addEdges(int key1, int key2){
-    node* temp = head;
-    node* temp1=new node(key2);
-    while(true){
-        if(temp->data==key1){
-            temp1->neighbour=temp->neighbour;
-            temp->neighbour = temp1;
+void graph::addEdges(int ver1, int ver2)
+{
+    Node *newNode = HEAD;
+    Node *newNode1 = new Node(ver2);
+    while (true)
+    {
+        if (newNode->data == ver1)
+        {
+            newNode1->neighbour = newNode->neighbour;
+            newNode->neighbour = newNode1;
             break;
         }
-        if(temp->next==nullptr){break;}
-        temp=temp->next;
+        if (newNode->next == nullptr)
+        {
+            break;
+        }
+        newNode = newNode->next;
     }
     return;
 };
 
-void graph::removeVertex(int key){
-    node *temp1 = head;
-    node *temp2;
-    node *temp3 = nullptr;
-    node *temp4;
-    while(temp1!=nullptr){
-        temp2=temp1->neighbour;
-        if(temp1->data==key){
-            while(temp1->neighbour!=nullptr){
-                temp2=temp1->neighbour;
-                temp1->neighbour=temp2->neighbour;
-                delete[]temp2;
+void graph::removeVertex(int vertexToRemove)
+{
+    Node *newNode1 = HEAD;
+    Node *newNode2;
+    Node *newNode3 = nullptr;
+    Node *newNode4;
+    while (newNode1 != nullptr)
+    {
+        newNode2 = newNode1->neighbour;
+        if (newNode1->data == vertexToRemove)
+        {
+            while (newNode1->neighbour != nullptr)
+            {
+                newNode2 = newNode1->neighbour;
+                newNode1->neighbour = newNode2->neighbour;
+                delete[] newNode2;
             }
-            if(temp3==nullptr){
-                head = temp2->next;
-                delete[]temp2;
-            }else{
-                temp3->next=temp1->next;
-                delete[]temp1;
+            if (newNode3 == nullptr)
+            {
+                HEAD = newNode2->next;
+                delete[] newNode2;
+            }
+            else
+            {
+                newNode3->next = newNode1->next;
+                delete[] newNode1;
             }
         }
-        temp3=temp1;
-        while(temp2!=nullptr){
-            if(temp2->data==key){
-                temp3->neighbour=temp2->neighbour;
-                delete [] temp2;
+        newNode3 = newNode1;
+        while (newNode2 != nullptr)
+        {
+            if (newNode2->data == vertexToRemove)
+            {
+                newNode3->neighbour = newNode2->neighbour;
+                delete[] newNode2;
                 break;
             }
-            temp2 = temp2->neighbour;
-            temp3 = temp3->neighbour;
+            newNode2 = newNode2->neighbour;
+            newNode3 = newNode3->neighbour;
         }
-        temp1=temp1->next;
+        newNode1 = newNode1->next;
     }
     return;
 };
 
-void graph::removeEdges(int key1, int key2){
-    node *temp1 = head;
-    node *temp2;
-    node *temp3;
-    while(true){
-        if(temp1->data==key1){
-            temp2=temp1->neighbour;
-            temp3=temp1;
-            while(true){
-                if(temp2->data==key2){
-                    temp3->neighbour=temp2->neighbour;
-                    delete [] temp2;
+void graph::removeEdges(int ver1, int ver2)
+{
+    Node *newNode1 = HEAD;
+    Node *newNode2;
+    Node *newNode3;
+    while (true)
+    {
+        if (newNode1->data == ver1)
+        {
+            newNode2 = newNode1->neighbour;
+            newNode3 = newNode1;
+            while (true)
+            {
+                if (newNode2->data == ver2)
+                {
+                    newNode3->neighbour = newNode2->neighbour;
+                    delete[] newNode2;
                     return;
                 }
-                temp2 = temp2->neighbour;
-                temp3 = temp3->neighbour;
+                newNode2 = newNode2->neighbour;
+                newNode3 = newNode3->neighbour;
             }
         }
-        temp1=temp1->next;
-        if(temp1==nullptr){
+        newNode1 = newNode1->next;
+        if (newNode1 == nullptr)
+        {
             break;
         }
     }
     return;
 };
 
-int graph::numVertex(){
-    node * temp = head;
+int graph::numVertex()
+{
+    Node *newNode = HEAD;
     int count = 0;
-    while(temp!=nullptr){
+    while (newNode != nullptr)
+    {
         count++;
-        temp=temp->next;
+        newNode = newNode->next;
     }
     return count;
 };
 
-int graph::numEdges(){
-    node *vertex = head;
-    node *neighbour1;
+int graph::numEdges()
+{
+    Node *vertex = HEAD;
+    Node *neighbour1;
     int count = 0;
-    while(vertex!=nullptr){
-        neighbour1=vertex->neighbour;
-        while (neighbour1!=nullptr){
+    while (vertex != nullptr)
+    {
+        neighbour1 = vertex->neighbour;
+        while (neighbour1 != nullptr)
+        {
             count++;
-            neighbour1=neighbour1->neighbour;
+            neighbour1 = neighbour1->neighbour;
         }
         vertex = vertex->next;
     }
     return count;
 };
 
-int graph::indegree(int key){
-    node *vertex = head;
-    node *neighbour1;
+int graph::indegree(int ver)
+{
+    Node *vertex = HEAD;
+    Node *neighbour1;
     int count = 0;
-    while(vertex!=nullptr){
-        neighbour1=vertex->neighbour;
-        while (neighbour1!=nullptr){
-            if(neighbour1->data==key){
+    while (vertex != nullptr)
+    {
+        neighbour1 = vertex->neighbour;
+        while (neighbour1 != nullptr)
+        {
+            if (neighbour1->data == ver)
+            {
                 count++;
             }
-            neighbour1=neighbour1->neighbour;
+            neighbour1 = neighbour1->neighbour;
         }
         vertex = vertex->next;
     }
     return count;
 };
 
-int graph::outdegree(int key){
-    node *vertex = head;
-    node *neighbour1;
+int graph::outdegree(int ver)
+{
+    Node *vertex = HEAD;
+    Node *neighbour1;
     int count = 0;
-    while(vertex!=nullptr){
-        if(vertex->data==key){
+    while (vertex != nullptr)
+    {
+        if (vertex->data == ver)
+        {
             neighbour1 = vertex->neighbour;
-            while(neighbour1!=nullptr){
+            while (neighbour1 != nullptr)
+            {
                 count++;
-                neighbour1=neighbour1->neighbour;
+                neighbour1 = neighbour1->neighbour;
             }
             break;
         }
@@ -167,33 +204,42 @@ int graph::outdegree(int key){
     return count;
 };
 
-int graph::degree(int key){
-    return (this->indegree(key)+this->outdegree(key));
+int graph::degree(int ver)
+{
+    return (this->indegree(ver) + this->outdegree(ver));
 };
 
-node* graph::neighbours(int key){
-    node *temp = head;
-    while(temp!=nullptr){
-        if(temp->data==key){
-            return temp->neighbour;
+Node *graph::neighbours(int ver)
+{
+    Node *newNode = HEAD;
+    while (newNode != nullptr)
+    {
+        if (newNode->data == ver)
+        {
+            return newNode->neighbour;
         }
-        temp=temp->next;
+        newNode = newNode->next;
     }
     return nullptr;
 };
 
-bool graph::isNeighbour(int key1,int key2){
-    node* temp = head;
-    while(temp!=nullptr){
-        if(temp->data==key1){
-            while(temp!=nullptr){
-                temp=temp->neighbour;
-                if(temp->data==key2){
+bool graph::isNeighbour(int ver1, int ver2)
+{
+    Node *newNode = HEAD;
+    while (newNode != nullptr)
+    {
+        if (newNode->data == ver1)
+        {
+            while (newNode != nullptr)
+            {
+                newNode = newNode->neighbour;
+                if (newNode->data == ver2)
+                {
                     return true;
                 }
             }
         }
-        temp=temp->next;
+        newNode = newNode->next;
     }
     return false;
 };

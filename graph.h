@@ -1,25 +1,25 @@
 
-class node
+class Node
 {
 public:
-    node *next;
+    Node *next;
     int data;
-    node *neighbour;
-    node(int key = 0, node *node1 = nullptr, node *node2 = nullptr)
+    Node *neighbour;
+    Node(int key = 0, Node *NODE1 = nullptr, Node *NODE2 = nullptr)
     {
         data = key;
-        next = node1;
-        neighbour = node2;
+        next = NODE1;
+        neighbour = NODE2;
     }
 };
 
 class graph
 {
 public:
-    node *head;
+    Node *HEAD;
     bool directed;
 
-    graph(node *node = nullptr, bool direction = true) : head(node), directed(direction) {}
+    graph(Node *Node = nullptr, bool direction = true) : HEAD(Node), directed(direction) {}
 
     bool isEmpty();
     bool isDirected();
@@ -32,6 +32,6 @@ public:
     int indegree(int ver);
     int outdegree(int ver);
     int degree(int ver);
-    node *neighbours(int ver);
+    Node *neighbours(int ver);
     bool isNeighbour(int ver1, int ver2);
 };
