@@ -5,11 +5,11 @@ public:
     Node *next;
     int data;
     Node *neighbour;
-    Node(int key = 0, Node *NODE1 = nullptr, Node *NODE2 = nullptr)
+    Node(int key = 0, Node *node1 = nullptr, Node *node2 = nullptr)
     {
         data = key;
-        next = NODE1;
-        neighbour = NODE2;
+        next = node1;
+        neighbour = node2;
     }
 };
 
